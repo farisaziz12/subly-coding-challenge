@@ -14,7 +14,7 @@ In the project directory, you can run:
 - The cards will not scale for different desktop sizes.
 - The incoming JSON data from the API will not change. Only the `error`, `transcribing` and `ready` statuses will be handled by the app. There is no specific accommodation for extra long names.
 - The app does not show a different UI if the API request responds with anything other than `200` or with no media data (empty array).
-- The `updatedAt` datetime values will not be under 1 month from the current date. Cases such as `1 day ago` or `1 week ago` are not handled. The function that handles the formatting was created for a simple functionality demonstration and not an extensive integration for all edge cases.
+- The `updatedAt` datetime values will not be under 1 day from the current date. Cases such as `1 minute ago` are not handled. The function that handles the formatting was created for a simple functionality demonstration and not an extensive integration for all edge cases.
 - There is no `onClick` functionality for any buttons present in the `MediaCards`. They only trigger a window alert.
 - No specific performance optimizations need to be made (e.g. caching, memoization, etc).
 - The media filters should be combined. E.g. if `ready` and `en` are both selected, the app should show only media that is ready and has english as a language.
