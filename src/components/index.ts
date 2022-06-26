@@ -1,2 +1,1 @@
-
-export {}
+export { MediaCard } from "./MediaCard"
