@@ -71,7 +71,6 @@ function App() {
         })
       : media;
 
-    console.log(filteredMedia);
   return (
     <>
       <Title>Subly</Title>
