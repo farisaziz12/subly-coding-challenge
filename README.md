@@ -27,3 +27,5 @@ In the project directory, you can run:
 - The source code uses a simple filing structure to keep the code clean. However, if the project was  larger and had 10+ components I would have opted for an [atomic filing structure](https://atomicdesign.bradfrost.com/chapter-2/).
 - A Constants directory was created to keep variables that would normally need to be reused throughout the codebase. This is not the case is this project. However, it is a good practice to keep constants in a separate file for manageability.
 - The `filterOptions` in `App.tsx` don't technically need to be filtered for duplicates as the mock API data doesn't change. However, this is done for demonstration purposes in the case that multiple items with the same `status` are returned from the API.
+- Some very basic unit and integration tests were created to make sure the app is working as expected. These tests are not exhaustive and would have been expanded upon if time allowed.
+- [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) were used for the git flow commit standards to maintain consistency.
