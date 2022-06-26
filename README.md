@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Subly Coding Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+## To Run Locally
 
 In the project directory, you can run:
 
-### `yarn start`
+ `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ open the browser to http://localhost:3000
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## This React app has been built with the assumptions that
 
-### `yarn test`
+- It will be only used for desktop/laptop devices (width: `>1200px`). Therefore, no mobile responsive optimizations have been made.
+- The cards will not scale for different desktop sizes.
+- The incoming JSON data from the API will not change. Only the `error`, `transcribing` and `ready` statuses will be handled by the app. There is no specific accommodation for extra long names.
+- The app does not show a different UI if the API request responds with anything other than `200` or with no media data (empty array).
+- The `updatedAt` datetime values will not be under 1 month from the current date. Cases such as `1 day ago` or `1 week ago` are not handled. The function that handles the formatting was created for a simple functionality demonstration and not an extensive integration for all edge cases.
+- There is no `onClick` functionality for any buttons present in the `MediaCards`. They only trigger a window alert.
+- No specific performance optimizations need to be made (e.g. caching, memoization, etc).
+- The media filters should be combined. E.g. if `ready` and `en` are both selected, the app should show only media that is ready and has english as a language.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Decisions
+- The app was initialized using the `create-react-app` cli tool with the `typescript` template to save setup time.
+- NextJs was not used as there for no apparent need for Server Side Rendering.
+- The app was built using `styled-components` to make the CSS easier to manage (no class name conflicts + simple prop injection for dynamic styling).
+- The browser's built in `fetch` API was used to make the API calls. There was no apparent reason to add or create a custom fetch library (e.g. `react-query`) to handle, caching, retries, etc.
+- The source code uses a simple filing structure to keep the code clean. However, if the project was  larger and had 10+ components I would have opted for an [atomic filing structure](https://atomicdesign.bradfrost.com/chapter-2/).
+- A Constants directory was created to keep variables that would normally need to be reused throughout the codebase. This is not the case is this project. However, it is a good practice to keep constants in a separate file for manageability.
+- The `filterOptions` in `App.tsx` don't technically need to be filtered for duplicates as the mock API data doesn't change. However, this is done for demonstration purposes in the case that multiple items with the same `status` are returned from the API.
