@@ -18,14 +18,23 @@ export const timeSince = (date: string): string =>  {
     if (totalDays > 365) {
         return timeFormat.format(-(totalDays / 365).toFixed(0), 'years');
     }
-    if (totalDays < 30) {
-        return timeFormat.format(-(totalDays), 'days');
-    }
     if (totalDays === 30) {
         return timeFormat.format(-(totalDays / 30).toFixed(0), 'month');
     }
     if (totalDays > 30) {
         return timeFormat.format(-(totalDays / 30).toFixed(0), 'months');
+    }
+
+    if (totalDays > 7) {
+        return timeFormat.format(-(totalDays / 7).toFixed(0), 'weeks');
+    }
+
+    if (totalDays === 7) {
+        return timeFormat.format(-(totalDays / 7).toFixed(0), 'week');
+    }
+
+    if (totalDays < 7) {
+        return timeFormat.format(-(totalDays), 'days');
     }
     if (totalDays === 1) {
         return timeFormat.format(-1, 'day');
